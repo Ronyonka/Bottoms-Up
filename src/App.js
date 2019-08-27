@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { toUnicode } from 'punycode';
+
+
+
 
 class App extends Component {
+  state = {
+    drinks: []
+  }
+  componentDidMount() {
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ drinks:data.drinks })
+      console.log(this.state.drinks)
+    })
+    .catch(console.log)
+  }
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Drinks</h1>
+        {this.state.drinks.map((drink) => (
+          <h5>{drink.strCategory}</h5>
+        ))}
       </div>
     );
   }
