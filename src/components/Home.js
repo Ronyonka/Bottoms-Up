@@ -3,12 +3,13 @@ import {Link} from 'react-router-dom';
 
 function Home(){
     useEffect(()=>{
+        // eslint-disable-next-line
         fetchItems();
     }, []);
     const [items, setItems] = useState([]);
     const fetchItems = async () =>{
         const data = await fetch(
-            'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'
+            'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
         );
 
         const items = await data.json();
@@ -19,8 +20,8 @@ function Home(){
     return (
         <div>
             {items.map(item=>(
-                <h3 key={item.strCategory}> 
-                <Link to={`/${item.strCategory}`}>{item.strCategory}</Link>
+                <h3 key={item.strIngredient1}> 
+                <Link to={`/${item.strIngredient1}`}>{item.strIngredient1}</Link>
                 </h3>
             ))}  
         </div>

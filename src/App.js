@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/Home';
-import Category from './components/Category';
-
-
-
+import Ingredient from './components/Ingredient';
 
 
 class App extends Component {
@@ -16,7 +13,7 @@ class App extends Component {
         <Router>
           <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/:id' component={Category}/>
+          <Route path='/:id' component={Ingredient}/>
           </Switch>
         </Router>
       </div>
