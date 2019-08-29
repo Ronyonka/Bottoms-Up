@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './components/Home';
+import Category from './components/Category';
 
 
 
@@ -13,7 +14,10 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Route path='/' component={Home} />
+          <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/:id' component={Category}/>
+          </Switch>
         </Router>
       </div>
     );
