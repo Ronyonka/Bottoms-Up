@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
-// eslint-disable-next-line
 import {Link} from 'react-router-dom';
 
-function Ingredient({ match }){
+function SingleIngredient({ match }){
     useEffect(()=>{
         // eslint-disable-next-line
         fetchItem();
@@ -25,7 +24,7 @@ function Ingredient({ match }){
     const fetchDrinks = async () =>{
         var path = match.params.id.split(" ").join("_")
         const data = await fetch(
-            `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${path}`
+            `https://www.thecocktaildb.com/api/json/v2/1/filter.php?i=${path}`
         );
         const items = await data.json();
 
@@ -41,10 +40,10 @@ function Ingredient({ match }){
                 </div>
             ))}
             {drinks.map(item=>(
-                <h4 key={item.idDrink}>{item.strDrink}</h4>
+                <h4 key={item.idDrink}> <Link to={`/drink/${item.idDrink}`}>{item.strDrink}</Link></h4>
             ))}
         </div>
     )
 }
 
-export default Ingredient;
+export default SingleIngredient;

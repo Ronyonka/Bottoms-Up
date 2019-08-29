@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
-function Home(){
+function Ingredients(){
     useEffect(()=>{
         // eslint-disable-next-line
         fetchItems();
@@ -29,4 +29,4 @@ function Home(){
     )
 }
 
-export default Home;
+export default Ingredients;
